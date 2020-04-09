@@ -1,4 +1,5 @@
 require('./store').init()
+const tasks = require('./routes/tasks')
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
@@ -36,6 +37,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(tasks.routes(), tasks.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
